@@ -9,14 +9,14 @@ def artifactory = new Artifactory(this)
 def packager = new Packager(this, 'cc')
 
 properties([
-        [$class: 'GithubProjectProperty', displayName: 'fees-register promotion pipeline', projectUrlStr: 'https://git.reform.hmcts.net/fees-register/fees-register-promotion-pipeline'],
+        [$class: 'GithubProjectProperty', displayName: 'fees-register-api promotion pipeline', projectUrlStr: 'https://git.reform.hmcts.net/fees-register/fees-register-promotion-pipeline'],
         parameters([string(description: 'RPM Version', name: 'rpmVersion')])
 ])
 
 node {
     try {
         stage('Tag testing passed'){
-            new RPMTagger(this, 'fees-register-api', packager.rpmName('fees-register-api', params.idamApiRpmVersion), 'cc-local').tagTestingPassedOn('test')
+            new RPMTagger(this, 'fees-register-api', packager.rpmName('fees-register-api', params.rpmVersion), 'cc-local').tagTestingPassedOn('test')
         }
 
         stage('Promote to Prod') {

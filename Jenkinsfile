@@ -9,7 +9,7 @@ def artifactory = new Artifactory(this)
 def packager = new Packager(this, 'cc')
 
 properties([
-        [$class: 'GithubProjectProperty', displayName: 'fees-register-api promotion pipeline', projectUrlStr: 'https://git.reform.hmcts.net/fees-register/fees-register-promotion-pipeline'],
+        [$class: 'GithubProjectProperty', displayName: 'fees-register-api promotion pipeline', projectUrlStr: 'https://github.com/hmcts/ccfr-fees-register-promotion-pipeline'],
         parameters([string(description: 'RPM Version', name: 'rpmVersion')])
 ])
 
